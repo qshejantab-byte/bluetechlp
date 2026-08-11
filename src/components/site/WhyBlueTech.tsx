@@ -6,25 +6,27 @@ import installImg from "@/assets/support-install.jpg";
 export function WhyBlueTech() {
   return (
     <Section id="why-bluetech" tone="dark">
-      <Reveal className="max-w-3xl">
+      <Reveal className="max-w-5xl">
         <Eyebrow tone="dark">Why BlueTech</Eyebrow>
-        <Heading tone="dark" className="mt-5">
-          A reseller that stays involved after delivery.
-        </Heading>
-        <Lede tone="dark" className="mt-6">
-          BlueTech supplies technology to organisations and individuals in Rwanda. We
-          advise on the right product, deliver and install it, and stay reachable when
-          something needs attention.
-        </Lede>
+        <p className="mt-6 font-display text-[2rem] font-semibold leading-[1.05] text-ink-foreground sm:text-5xl lg:text-[4rem]">
+          Technology is easy to sell.
+          <br />
+          <span className="text-ink-muted">Getting the right technology isn't.</span>
+        </p>
       </Reveal>
 
-      <div className="mt-14 grid gap-x-12 gap-y-10 border-t border-ink-border pt-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-14 border-t border-ink-border sm:mt-20">
         {reasons.map((r, i) => (
           <Reveal key={r.title} delay={i * 60}>
-            <h3 className="font-display text-lg font-medium text-ink-foreground">
-              {r.title}
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-muted">{r.copy}</p>
+            <div className="grid gap-3 border-b border-ink-border py-8 sm:grid-cols-[3rem_16rem_1fr] sm:gap-8 sm:py-10">
+              <span className="eyebrow text-brand-bright">{`0${i + 1}`}</span>
+              <h3 className="font-display text-xl font-medium text-ink-foreground sm:text-2xl">
+                {r.title}
+              </h3>
+              <p className="max-w-xl text-sm leading-relaxed text-ink-muted sm:text-base">
+                {r.copy}
+              </p>
+            </div>
           </Reveal>
         ))}
       </div>
@@ -35,11 +37,11 @@ export function WhyBlueTech() {
 export function Services() {
   return (
     <Section id="services">
-      <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-16">
-        <Reveal className="lg:sticky lg:top-28">
+      <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <Reveal className="lg:sticky lg:top-28 lg:self-start">
           <Eyebrow>Services and support</Eyebrow>
           <Heading as="h3" className="mt-5">
-            We don't stop at delivery.
+            Six steps, start to finish.
           </Heading>
           <img
             src={installImg}
@@ -52,19 +54,23 @@ export function Services() {
           />
         </Reveal>
 
-        <Reveal delay={80}>
-          <ul className="border-t border-border">
-            {services.map(([t, c]) => (
-              <li
-                key={t}
-                className="grid gap-2 border-b border-border py-6 sm:grid-cols-[14rem_1fr] sm:gap-8"
-              >
-                <h4 className="font-display text-base font-medium">{t}</h4>
-                <p className="text-sm leading-relaxed text-muted-foreground">{c}</p>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+        <ol className="relative border-l border-border pl-6 sm:pl-10">
+          {services.map(([t, c], i) => (
+            <Reveal as="li" key={t} delay={i * 50}>
+              <div className="relative pb-10 last:pb-0">
+                <span
+                  aria-hidden
+                  className="absolute -left-[1.85rem] top-1 h-2 w-2 rounded-full bg-brand sm:-left-[2.85rem]"
+                />
+                <p className="eyebrow text-muted-foreground/70">{`0${i + 1}`}</p>
+                <h4 className="mt-2 font-display text-2xl font-medium sm:text-3xl">{t}</h4>
+                <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {c}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </ol>
       </div>
     </Section>
   );
