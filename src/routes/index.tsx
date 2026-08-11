@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site/SiteNav";
 import { Hero } from "@/components/site/Hero";
-import { Interactive } from "@/components/site/Interactive";
+import { Interactive, WhyInteractive, DisplayShowcase } from "@/components/site/Interactive";
 import { Applications } from "@/components/site/Applications";
 import { Products } from "@/components/site/Products";
-import { WhyBlueTech, Trust } from "@/components/site/WhyBlueTech";
+import { WhyBlueTech, Services, Trust } from "@/components/site/WhyBlueTech";
+import { FinalCta } from "@/components/site/FinalCta";
 import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
@@ -29,14 +30,24 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="overflow-x-hidden">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-brand focus:px-5 focus:py-3 focus:text-sm focus:text-ink-foreground"
+      >
+        Skip to content
+      </a>
       <SiteNav />
-      <main>
+      <main id="main">
         <Hero />
         <Interactive />
+        <WhyInteractive />
+        <DisplayShowcase />
         <Applications />
         <Products />
         <WhyBlueTech />
+        <Services />
         <Trust />
+        <FinalCta />
         <Contact />
       </main>
       <SiteFooter />

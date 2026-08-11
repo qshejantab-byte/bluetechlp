@@ -1,35 +1,58 @@
 import { Wordmark } from "./Wordmark";
-import { contact, navLinks } from "@/lib/site-data";
+import { contact } from "@/lib/site-data";
+
+const columns = [
+  {
+    title: "Products",
+    links: [
+      { label: "Interactive Smart Displays", href: "#interactive" },
+      { label: "Audio", href: "#audio" },
+      { label: "Wearables", href: "#wearables" },
+      { label: "Computing", href: "#computing" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "Why BlueTech", href: "#why-bluetech" },
+      { label: "Services and support", href: "#services" },
+      { label: "Applications", href: "#applications" },
+      { label: "Contact", href: "#contact" },
+    ],
+  },
+];
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-ink-border bg-ink py-16 sm:py-20">
       <div className="mx-auto max-w-[88rem] px-5 sm:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="max-w-sm">
             <Wordmark tone="light" />
             <p className="mt-5 text-sm leading-relaxed text-ink-muted">
-              BlueTech is a technology reseller and solutions provider in Rwanda, supplying
-              interactive smart displays, audio, wearables and computing to organisations
-              and individuals.
+              BlueTech is a technology reseller in Rwanda, supplying interactive smart
+              displays, audio, wearables and computing to organisations and individuals —
+              with installation, training and support.
             </p>
           </div>
 
-          <nav className="flex flex-col gap-3">
-            <p className="eyebrow text-ink-muted/60">Explore</p>
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-sm text-ink-muted transition-colors hover:text-ink-foreground"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
+          {columns.map((col) => (
+            <nav key={col.title} aria-label={col.title} className="flex flex-col gap-3">
+              <h2 className="eyebrow text-ink-muted/60">{col.title}</h2>
+              {col.links.map((l) => (
+                <a
+                  key={l.href + l.label}
+                  href={l.href}
+                  className="text-sm text-ink-muted transition-colors hover:text-ink-foreground"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+          ))}
 
           <div className="flex flex-col gap-3">
-            <p className="eyebrow text-ink-muted/60">Contact</p>
+            <h2 className="eyebrow text-ink-muted/60">Contact</h2>
             <a href={contact.phoneHref} className="text-sm text-ink-muted hover:text-ink-foreground">
               {contact.phone}
             </a>
@@ -46,6 +69,7 @@ export function SiteFooter() {
               {contact.email}
             </a>
             <p className="text-sm text-ink-muted">{contact.address}</p>
+            <p className="text-sm text-ink-muted">{contact.hours}</p>
           </div>
         </div>
 

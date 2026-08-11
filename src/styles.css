@@ -151,6 +151,20 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :target,
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-bright);
+    outline-offset: 3px;
+  }
+
   * {
     border-color: var(--color-border);
   }
@@ -190,6 +204,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
