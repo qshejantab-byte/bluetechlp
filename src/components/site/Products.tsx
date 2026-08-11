@@ -46,6 +46,23 @@ export function Products() {
         </Lede>
       </Reveal>
 
+      <ol className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-6">
+        {["Interactive Displays", "Audio", "Wearables", "Computing"].map((t, i) => (
+          <li key={t} className="flex items-center gap-4">
+            {i > 0 ? <span aria-hidden className="text-muted-foreground/50">→</span> : null}
+            <span
+              className={
+                i === 0
+                  ? "font-display text-base font-medium text-brand sm:text-lg"
+                  : "eyebrow text-muted-foreground"
+              }
+            >
+              {t}
+            </span>
+          </li>
+        ))}
+      </ol>
+
       <div className="mt-16 space-y-16 sm:space-y-24">
         {categories.map((c, i) => (
           <Reveal key={c.id}>

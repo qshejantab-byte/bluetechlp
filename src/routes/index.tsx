@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site/SiteNav";
 import { Hero } from "@/components/site/Hero";
 import { Interactive, WhyInteractive, DisplayShowcase } from "@/components/site/Interactive";
+import { ScreenStory } from "@/components/site/ScreenStory";
 import { Applications } from "@/components/site/Applications";
 import { Products } from "@/components/site/Products";
 import { WhyBlueTech, Services, Trust } from "@/components/site/WhyBlueTech";
@@ -39,6 +40,7 @@ function Index() {
       <SiteNav />
       <main id="main">
         <Hero />
+        <ScreenStory />
         <Interactive />
         <WhyInteractive />
         <DisplayShowcase />

@@ -111,3 +111,30 @@ export function Lede({ tone = "light", className, children }: { tone?: Tone; cla
     </p>
   );
 }
+
+/** A physical interactive-display frame: bezel, screen, stand. */
+export function ScreenFrame({
+  children,
+  className,
+  stand = true,
+}: {
+  children: ReactNode;
+  className?: string;
+  stand?: boolean;
+}) {
+  return (
+    <div className={cn("relative w-full", className)}>
+      <div className="relative overflow-hidden rounded-[0.6rem] border border-white/15 bg-[oklch(0.1_0.02_264)] p-[3px] shadow-[0_40px_120px_-40px_oklch(0.1_0.02_264/0.9)] sm:rounded-[0.9rem] sm:p-[7px]">
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[0.35rem] bg-ink sm:rounded-[0.5rem]">
+          {children}
+        </div>
+      </div>
+      {stand ? (
+        <div aria-hidden className="mx-auto flex w-full flex-col items-center">
+          <div className="h-5 w-24 bg-[oklch(0.22_0.02_264)] sm:h-8 sm:w-36" />
+          <div className="h-1.5 w-40 rounded-full bg-[oklch(0.26_0.02_264)] sm:h-2 sm:w-64" />
+        </div>
+      ) : null}
+    </div>
+  );
+}

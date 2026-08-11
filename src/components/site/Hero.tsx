@@ -1,51 +1,79 @@
 import heroImg from "@/assets/hero-display.jpg";
-import { Cta } from "./ui";
+import { Cta, ScreenFrame } from "./ui";
+
+const words = ["PRESENT", "WRITE", "SHARE", "COLLABORATE", "CONNECT"];
 
 export function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden bg-ink">
-      <img
-        src={heroImg}
-        alt="A presenter annotating on a wall-mounted interactive smart display in a boardroom"
-        width={1920}
-        height={1200}
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 h-full w-full object-cover object-[62%_center] opacity-60 sm:object-center sm:opacity-95"
+    <section id="top" className="relative isolate overflow-hidden bg-ink pb-16 pt-28 sm:pb-24 sm:pt-32">
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-[60svh] bg-[radial-gradient(120%_80%_at_50%_0%,oklch(0.24_0.06_262)_0%,transparent_70%)]"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,oklch(0.13_0.03_264/0.9)_0%,oklch(0.13_0.03_264/0.65)_40%,oklch(0.13_0.03_264/0.96)_100%)] sm:bg-[linear-gradient(180deg,oklch(0.13_0.03_264/0.75)_0%,oklch(0.13_0.03_264/0.25)_35%,oklch(0.13_0.03_264/0.9)_78%,oklch(0.13_0.03_264/0.97)_100%)]" />
 
-      <div className="relative mx-auto flex min-h-[92svh] max-w-[88rem] flex-col justify-end px-5 pb-14 pt-32 sm:px-8 sm:pb-20 lg:min-h-[96svh] lg:pb-24">
+      <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
         <p className="eyebrow text-brand-bright">BlueTech · Kigali, Rwanda</p>
-        <h1 className="mt-5 max-w-4xl font-display text-[2.6rem] leading-[0.98] font-semibold text-ink-foreground sm:text-6xl lg:text-[5.25rem]">
-          Interactive smart displays, supplied and supported in Rwanda.
+
+        <h1 className="mt-6 max-w-5xl font-display text-[2.7rem] font-semibold leading-[0.94] text-ink-foreground sm:text-7xl lg:text-[6.5rem]">
+          The screen is
+          <br />
+          the experience.
         </h1>
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
-          BlueTech is a technology reseller. We supply interactive displays for
-          classrooms and boardrooms — plus audio, wearables and computing — with honest
-          advice before the sale and real support after it.
-        </p>
 
-        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-          <Cta href="#contact">Get a Quote</Cta>
-          <Cta href="#interactive" variant="outlineDark">
-            Explore Interactive Displays
-          </Cta>
+        <div className="mt-7 grid gap-6 border-t border-ink-border pt-7 sm:grid-cols-[1.1fr_auto] sm:items-end sm:gap-10">
+          <p className="max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
+            Interactive smart displays for modern spaces — supplied, installed and
+            supported in Rwanda. Plus audio, wearables and computing from a reseller that
+            stays involved after delivery.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Cta href="#contact">Get a Quote</Cta>
+            <Cta href="#interactive" variant="outlineDark">
+              See the display
+            </Cta>
+          </div>
         </div>
+      </div>
 
-        <div className="mt-12 grid max-w-3xl gap-6 border-t border-ink-border pt-8 sm:grid-cols-[auto_1fr] sm:gap-12">
-          <div className="min-w-0">
-            <p className="eyebrow text-ink-muted/70">Flagship</p>
-            <p className="mt-2 text-sm font-medium text-ink-foreground sm:text-base">
-              Interactive Smart Displays
-            </p>
-          </div>
-          <div className="min-w-0">
-            <p className="eyebrow text-ink-muted/70">Also from BlueTech</p>
-            <p className="mt-2 text-sm font-medium text-ink-foreground sm:text-base">
-              Audio · Wearables · Computing
-            </p>
-          </div>
+      {/* Display as the dominant object */}
+      <div className="relative mt-12 sm:mt-16">
+        <ul
+          aria-hidden
+          className="mx-auto mb-5 flex max-w-[88rem] flex-wrap justify-center gap-x-5 gap-y-2 px-5 sm:mb-8 sm:gap-x-12"
+        >
+          {words.map((w) => (
+            <li
+              key={w}
+              className="eyebrow text-[0.6rem] text-ink-muted/45 sm:text-[0.7rem] sm:tracking-[0.4em]"
+            >
+              {w}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mx-auto max-w-[76rem] px-5 sm:px-8">
+          <ScreenFrame>
+            <img
+              src={heroImg}
+              alt="A presenter annotating on a wall-mounted interactive smart display in a boardroom"
+              width={1920}
+              height={1200}
+              fetchPriority="high"
+              decoding="async"
+              className="h-full w-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,oklch(0.12_0.03_264/0.85)_100%)]" />
+            <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-4 p-4 sm:p-7">
+              <p className="font-display text-lg font-medium leading-tight text-ink-foreground sm:text-3xl">
+                Interactive Smart Displays
+              </p>
+              <p className="eyebrow shrink-0 text-right text-[0.6rem] text-ink-muted sm:text-[0.7rem]">
+                Technology for
+                <br />
+                modern spaces
+              </p>
+            </div>
+          </ScreenFrame>
         </div>
       </div>
     </section>
