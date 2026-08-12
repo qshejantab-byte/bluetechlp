@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Eyebrow, Heading, Lede } from "./ui";
+import { useEffect, useRef, useState } from "react";
 import eduImg from "@/assets/classroom.jpg";
 import corpImg from "@/assets/env-corporate.jpg";
 import govImg from "@/assets/env-government.jpg";
@@ -17,62 +16,125 @@ const envs = [
 ] as const;
 
 export function Applications() {
-  const [i, setI] = useState(0);
-  const env = envs[i]!;
+  const [active, setActive] = useState(0);
+  const panels = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset["env"]));
+        }
+      },
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
+    );
+    panels.current.forEach((el) => el && io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <section id="applications" className="relative bg-ink py-20 sm:py-28 lg:py-32">
-      <div className="mx-auto max-w-[88rem] px-5 sm:px-8">
-        <Eyebrow tone="dark">Environments</Eyebrow>
-        <Heading tone="dark" className="mt-5 max-w-3xl">
-          The same technology, six different rooms.
-        </Heading>
+    <section id="applications" className="relative bg-ink">
+      <div className="mx-auto max-w-[88rem] px-5 pt-20 sm:px-8 sm:pt-28 lg:pt-32">
+        <p className="eyebrow text-brand-bright">Environments</p>
+        <h2 className="mt-5 max-w-4xl font-display text-[2.1rem] font-semibold leading-[1.02] text-ink-foreground sm:text-5xl lg:text-[3.75rem]">
+          One display.
+          <br />
+          <span className="text-ink-muted">Different worlds.</span>
+        </h2>
       </div>
 
-      <div className="mt-10 sm:mt-14">
-        <div className="relative">
-          <img
-            key={env.key}
-            src={env.img}
-            alt={`${env.key} environment using an interactive display`}
-            loading="lazy"
-            decoding="async"
-            width={1600}
-            height={1100}
-            className="h-[26rem] w-full animate-in fade-in object-cover duration-700 sm:h-[34rem] lg:h-[40rem]"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,oklch(0.12_0.03_264/0.55)_0%,oklch(0.12_0.03_264/0.35)_35%,oklch(0.12_0.03_264/0.95)_100%)]" />
-
-          <div className="absolute inset-x-0 bottom-0 mx-auto max-w-[88rem] px-5 pb-8 sm:px-8 sm:pb-12">
-            <p className="eyebrow text-brand-bright">{env.n} · {env.key}</p>
-            <h3 className="mt-3 max-w-2xl font-display text-2xl font-semibold leading-tight text-ink-foreground sm:text-4xl lg:text-5xl">
-              {env.title}
-            </h3>
-            <Lede tone="dark" className="mt-4 max-w-xl">{env.copy}</Lede>
+      {/* Desktop: scroll-driven world change against a sticky environment */}
+      <div className="relative mt-12 hidden lg:block">
+        <div className="sticky top-0 h-svh w-full overflow-hidden">
+          {envs.map((e, i) => (
+            <img
+              key={e.key}
+              src={e.img}
+              alt={active === i ? `${e.key} environment using an interactive display` : ""}
+              aria-hidden={active !== i}
+              loading="lazy"
+              decoding="async"
+              width={1600}
+              height={1100}
+              className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out"
+              style={{ opacity: active === i ? 1 : 0 }}
+            />
+          ))}
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.12_0.03_264/0.92)_0%,oklch(0.12_0.03_264/0.6)_45%,oklch(0.12_0.03_264/0.25)_100%)]" />
+          <div className="absolute inset-y-0 right-8 flex flex-col justify-center gap-3">
+            {envs.map((e, i) => (
+              <span
+                key={e.key}
+                className={`h-px w-10 transition-all duration-500 ${active === i ? "w-20 bg-brand-bright" : "bg-white/25"}`}
+              />
+            ))}
           </div>
         </div>
 
-        <div className="mx-auto max-w-[88rem] px-5 sm:px-8">
-          <ul className="-mx-5 flex snap-x snap-mandatory gap-2 overflow-x-auto px-5 py-5 sm:mx-0 sm:flex-wrap sm:px-0">
-            {envs.map((e, idx) => (
-              <li key={e.key} className="snap-start">
-                <button
-                  type="button"
-                  onClick={() => setI(idx)}
-                  aria-pressed={idx === i}
-                  className={`whitespace-nowrap border px-5 py-3 text-sm transition-colors ${
-                    idx === i
-                      ? "border-brand-bright bg-brand-bright/10 text-ink-foreground"
-                      : "border-ink-border text-ink-muted hover:text-ink-foreground"
-                  }`}
+        <div className="pointer-events-none absolute inset-0">
+          {envs.map((e, i) => (
+            <div
+              key={e.key}
+              data-env={i}
+              ref={(el) => {
+                panels.current[i] = el;
+              }}
+              className="flex h-svh items-center"
+            >
+              <div className="mx-auto w-full max-w-[88rem] px-8">
+                <div
+                  className="max-w-xl transition-all duration-700 ease-out"
+                  style={{
+                    opacity: active === i ? 1 : 0.25,
+                    transform: active === i ? "none" : "translateY(14px)",
+                  }}
                 >
-                  <span className="eyebrow mr-2 text-[0.6rem] opacity-60">{e.n}</span>
-                  {e.key}
-                </button>
-              </li>
-            ))}
-          </ul>
+                  <p className="font-display text-[5rem] font-semibold leading-none text-brand-bright/80">
+                    {e.n}
+                  </p>
+                  <p className="eyebrow mt-4 text-ink-muted">{e.key}</p>
+                  <h3 className="mt-4 font-display text-4xl font-semibold leading-tight text-ink-foreground xl:text-5xl">
+                    {e.title}
+                  </h3>
+                  <p className="mt-5 text-base leading-relaxed text-ink-muted">{e.copy}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
+
+      {/* Mobile: swipeable environment story */}
+      <div className="mt-10 lg:hidden">
+        <ul className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-6 [scrollbar-width:none] sm:px-8">
+          {envs.map((e) => (
+            <li key={e.key} className="w-[82vw] shrink-0 snap-center sm:w-[60vw]">
+              <div className="relative overflow-hidden">
+                <img
+                  src={e.img}
+                  alt={`${e.key} environment using an interactive display`}
+                  loading="lazy"
+                  decoding="async"
+                  width={1200}
+                  height={1400}
+                  className="h-[26rem] w-full object-cover sm:h-[32rem]"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,oklch(0.12_0.03_264/0.15)_35%,oklch(0.12_0.03_264/0.95)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <p className="font-display text-3xl font-semibold leading-none text-brand-bright/80">
+                    {e.n}
+                  </p>
+                  <p className="eyebrow mt-2 text-ink-muted">{e.key}</p>
+                  <h3 className="mt-2 font-display text-xl font-semibold leading-tight text-ink-foreground">
+                    {e.title}
+                  </h3>
+                </div>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-ink-muted">{e.copy}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="px-5 pb-12 text-xs text-ink-muted/70 sm:px-8">Swipe to move between environments</p>
       </div>
     </section>
   );
