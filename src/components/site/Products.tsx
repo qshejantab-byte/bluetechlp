@@ -37,7 +37,7 @@ export function Products() {
       <Reveal className="relative grid gap-8 lg:grid-cols-2 lg:items-end lg:gap-16">
         <span
           aria-hidden
-          className="pointer-events-none absolute -top-14 left-0 select-none font-display text-[18vw] font-semibold leading-none tracking-tighter text-foreground/[0.04] lg:-top-24"
+          className="pointer-events-none absolute -top-24 right-0 hidden select-none whitespace-nowrap font-display text-[9vw] font-semibold leading-none tracking-tighter text-foreground/[0.045] lg:block"
         >
           ECOSYSTEM
         </span>
