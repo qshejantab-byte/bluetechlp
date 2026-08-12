@@ -34,7 +34,13 @@ const categories = [
 export function Products() {
   return (
     <Section id="products">
-      <Reveal className="grid gap-8 lg:grid-cols-2 lg:items-end lg:gap-16">
+      <Reveal className="relative grid gap-8 lg:grid-cols-2 lg:items-end lg:gap-16">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -top-14 left-0 select-none font-display text-[18vw] font-semibold leading-none tracking-tighter text-foreground/[0.04] lg:-top-24"
+        >
+          ECOSYSTEM
+        </span>
         <div>
           <Eyebrow>The BlueTech range</Eyebrow>
           <Heading className="mt-5">More from BlueTech.</Heading>
