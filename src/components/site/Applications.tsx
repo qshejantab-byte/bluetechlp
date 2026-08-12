@@ -71,7 +71,7 @@ export function Applications() {
           </div>
         </div>
 
-        <div className="pointer-events-none absolute inset-0">
+        <div className="relative -mt-[100svh]">
           {envs.map((e, i) => (
             <div
               key={e.key}
