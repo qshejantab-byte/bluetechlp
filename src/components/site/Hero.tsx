@@ -1,9 +1,16 @@
 import heroImg from "@/assets/hero-display.jpg";
+import { useScrollProgress } from "@/hooks/use-scroll-progress";
 import { Cta, ScreenFrame } from "./ui";
 
 const words = ["PRESENT", "WRITE", "SHARE", "COLLABORATE", "CONNECT"];
 
 export function Hero() {
+  const { ref, progress } = useScrollProgress<HTMLDivElement>();
+  // The display stays the anchor object: it settles into frame as the story begins.
+  const p = Math.min(1, Math.max(0, (progress - 0.35) / 0.45));
+  const scale = 0.955 + 0.045 * p;
+  const lift = (1 - p) * 26;
+
   return (
     <section id="top" className="relative isolate overflow-hidden bg-ink pb-16 pt-28 sm:pb-24 sm:pt-32">
       <div
@@ -36,10 +43,11 @@ export function Hero() {
       </div>
 
       {/* Display as the dominant object */}
-      <div className="relative mt-12 sm:mt-16">
+      <div ref={ref} className="relative mt-12 sm:mt-16">
         <ul
           aria-hidden
-          className="mx-auto mb-5 flex max-w-[88rem] flex-wrap justify-center gap-x-5 gap-y-2 px-5 sm:mb-8 sm:gap-x-12"
+          style={{ opacity: 0.35 + 0.65 * p, transform: `translateY(${lift * 0.4}px)` }}
+          className="mx-auto mb-5 flex max-w-[88rem] flex-wrap justify-center gap-x-5 gap-y-2 px-5 will-change-transform sm:mb-8 sm:gap-x-12"
         >
           {words.map((w) => (
             <li
@@ -51,7 +59,10 @@ export function Hero() {
           ))}
         </ul>
 
-        <div className="mx-auto max-w-[76rem] px-5 sm:px-8">
+        <div
+          className="mx-auto max-w-[76rem] px-5 will-change-transform sm:px-8"
+          style={{ transform: `translateY(${lift}px) scale(${scale})`, transformOrigin: "50% 0%" }}
+        >
           <ScreenFrame>
             <img
               src={heroImg}
