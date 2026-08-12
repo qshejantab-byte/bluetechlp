@@ -9,6 +9,7 @@ import { WhyBlueTech, Services, Trust } from "@/components/site/WhyBlueTech";
 import { FinalCta } from "@/components/site/FinalCta";
 import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { Bridge } from "@/components/site/ui";
 
 const title = "BlueTech — Interactive Smart Displays & Technology in Rwanda";
 const description =
@@ -42,11 +43,16 @@ function Index() {
         <Hero />
         <ScreenStory />
         <Interactive />
+        <Bridge direction="inkToLight" />
         <WhyInteractive />
+        <Bridge direction="lightToInk" />
         <DisplayShowcase />
         <Applications />
+        <Bridge direction="inkToLight" />
         <Products />
+        <Bridge direction="lightToInk" />
         <WhyBlueTech />
+        <Bridge direction="inkToLight" />
         <Services />
         <Trust />
         <FinalCta />
