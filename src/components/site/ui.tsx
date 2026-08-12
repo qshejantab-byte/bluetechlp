@@ -112,6 +112,21 @@ export function Lede({ tone = "light", className, children }: { tone?: Tone; cla
   );
 }
 
+/** A tonal bridge so one section bleeds into the next instead of stacking as boxes. */
+export function Bridge({ direction }: { direction: "inkToLight" | "lightToInk" }) {
+  return (
+    <div
+      aria-hidden
+      className={cn(
+        "h-20 w-full sm:h-28",
+        direction === "inkToLight"
+          ? "bg-[linear-gradient(180deg,var(--ink),var(--background))]"
+          : "bg-[linear-gradient(180deg,var(--background),var(--ink))]",
+      )}
+    />
+  );
+}
+
 /** A physical interactive-display frame: bezel, screen, stand. */
 export function ScreenFrame({
   children,
