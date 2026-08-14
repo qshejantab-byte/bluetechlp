@@ -74,7 +74,8 @@ export function ScreenStory() {
 
       <div className="mx-auto grid max-w-[88rem] gap-0 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         {/* Sticky screen */}
-        <div className="sticky top-20 z-10 -mx-5 bg-ink px-5 py-6 sm:top-24 sm:mx-0 sm:px-0 lg:self-start lg:py-16">
+        <div className="relative z-10 -mx-5 sm:mx-0 lg:mx-0">
+          <div className="sticky top-20 bg-ink px-5 py-6 sm:top-24 sm:px-0 lg:py-16">
           <ScreenFrame stand={false} className="mx-auto max-w-2xl lg:max-w-none">
             {steps.map((s, i) => (
               <div
@@ -111,6 +112,7 @@ export function ScreenStory() {
               ))}
             </div>
           </ScreenFrame>
+          </div>
         </div>
 
         {/* Steps */}
