@@ -60,7 +60,7 @@ export function Applications() {
               style={{ opacity: active === i ? 1 : 0 }}
             />
           ))}
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.12_0.03_264/0.92)_0%,oklch(0.12_0.03_264/0.6)_45%,oklch(0.12_0.03_264/0.25)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.12_0.03_264/0.95)_0%,oklch(0.12_0.03_264/0.78)_45%,oklch(0.12_0.03_264/0.35)_100%)]" />
           <div className="absolute inset-y-0 right-8 flex flex-col justify-center gap-3">
             {envs.map((e, i) => (
               <span

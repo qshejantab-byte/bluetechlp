@@ -152,12 +152,24 @@ export function WhyInteractive() {
         </Reveal>
       </div>
 
-      <div className="mx-auto mt-12 max-w-[88rem] px-5 sm:px-8">
-        <Lede className="max-w-2xl">
+      <div className="mx-auto mt-12 grid max-w-[88rem] gap-8 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+        <Lede>
           A room built around a projector points in one direction. An interactive display
           lets anyone step up, mark up the material, and leave with the session saved and
           shared.
         </Lede>
+        <div className="lg:justify-self-end lg:text-right">
+          <p className="font-display text-xl leading-snug sm:text-2xl">
+            Not sure which room to start with?
+          </p>
+          <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground lg:ml-auto">
+            We look at the space, the group size and how the room is used before
+            recommending anything.
+          </p>
+          <Cta href="#contact" variant="outlineLight" className="mt-6">
+            Talk to us about your room
+          </Cta>
+        </div>
       </div>
     </section>
   );

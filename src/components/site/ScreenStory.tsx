@@ -73,8 +73,9 @@ export function ScreenStory() {
       </div>
 
       <div className="mx-auto grid max-w-[88rem] gap-0 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-        {/* Sticky screen */}
-        <div className="sticky top-20 z-10 -mx-5 bg-ink px-5 py-6 sm:top-24 sm:mx-0 sm:px-0 lg:self-start lg:py-16">
+        {/* Sticky screen (desktop) */}
+        <div className="relative z-10 hidden lg:block">
+          <div className="sticky top-20 bg-ink px-5 py-6 sm:top-24 sm:px-0 lg:py-16">
           <ScreenFrame stand={false} className="mx-auto max-w-2xl lg:max-w-none">
             {steps.map((s, i) => (
               <div
@@ -111,6 +112,7 @@ export function ScreenStory() {
               ))}
             </div>
           </ScreenFrame>
+          </div>
         </div>
 
         {/* Steps */}
@@ -122,8 +124,23 @@ export function ScreenStory() {
               ref={(el) => {
                 refs.current[i] = el;
               }}
-              className="flex min-h-[62svh] flex-col justify-center border-b border-ink-border py-10 last:border-0 lg:min-h-[85svh]"
+              className="flex flex-col justify-center border-b border-ink-border py-10 last:border-0 lg:min-h-[85svh]"
             >
+              <div className="relative mb-6 overflow-hidden rounded-lg lg:hidden">
+                <img
+                  src={s.img}
+                  alt={`${s.word} on an interactive display`}
+                  loading="lazy"
+                  decoding="async"
+                  width={1600}
+                  height={1100}
+                  className="h-56 w-full object-cover sm:h-80"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,oklch(0.12_0.03_264/0.25),oklch(0.12_0.03_264/0.9))]" />
+                <p className="absolute inset-x-0 bottom-0 p-4 font-display text-2xl font-semibold uppercase tracking-tight text-ink-foreground sm:text-4xl">
+                  {s.word}
+                </p>
+              </div>
               <p className="eyebrow text-brand-bright">{`0${i + 1}`}</p>
               <h3 className="mt-4 max-w-lg font-display text-2xl font-medium leading-tight text-ink-foreground sm:text-4xl">
                 {s.title}
