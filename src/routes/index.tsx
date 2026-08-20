@@ -13,7 +13,7 @@ import { Bridge } from "@/components/site/ui";
 
 const title = "BlueTech — Interactive Smart Displays & Technology in Rwanda";
 const description =
-  "BlueTech supplies interactive smart displays, audio, wearables and computing to organisations in Rwanda, with expert guidance, installation and support.";
+  "BlueTech is a Rwanda-based technology reseller supplying Interactive Smart Displays for classrooms, boardrooms and training rooms — plus computing, presentation, printing and networking technology.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
