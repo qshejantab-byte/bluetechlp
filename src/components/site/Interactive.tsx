@@ -179,7 +179,8 @@ const fit = [
   ["01", "Room size", "How many people sit in the room, and how far back the last row is."],
   ["02", "Viewing distance", "The size that stays readable from the furthest seat, not just the nearest."],
   ["03", "Use case", "Teaching, meetings, training or briefings — each one leans on different features."],
-  ["04", "Mounting", "Fixed to the wall, or on a mobile stand that moves between rooms."],
+  ["04", "Mounting and environment", "Fixed to the wall, or on a mobile stand that moves between rooms."],
+  ["05", "Collaboration needs", "How many people work on the screen at once, and whether remote participants join."],
 ] as const;
 
 export function DisplayShowcase() {
@@ -205,8 +206,8 @@ export function DisplayShowcase() {
               The right display for the right room.
             </Heading>
             <Lede tone="dark" className="mt-5">
-              We don't sell a size off a list. Sizes, models and configurations are
-              selected per project — four things decide it.
+              The right configuration depends on the space it goes into. These are the
+              factors we work through with you.
             </Lede>
           </Reveal>
 

@@ -1,18 +1,21 @@
-// TEMPLATE CONTACT DETAILS — replace with BlueTech's verified details.
 export const contact = {
-  address: "KG 000 St, Kigali, Rwanda",
-  phone: "+250 000 000 000",
-  phoneHref: "tel:+250000000000",
-  whatsapp: "+250 000 000 000",
-  whatsappHref: "https://wa.me/250000000000",
-  email: "info@bluetech.rw",
-  hours: "Monday – Friday, 08:00 – 18:00 · Saturday, 09:00 – 14:00",
+  address: "KN59, ST 38, Near Gloria Hotel, Kigali, Rwanda",
+  phone: "+250 788 304 366",
+  phoneHref: "tel:+250788304366",
+  phoneAlt: "+250 788 523 788",
+  phoneAltHref: "tel:+250788523788",
+  whatsapp: "+250 788 304 366",
+  whatsappHref: "https://wa.me/250788304366",
+  email: "bluetech2020@gmail.com",
+  website: "www.bluetech.rw",
+  websiteHref: "https://www.bluetech.rw",
+  established: "2014",
 };
 
 export const navLinks = [
   { label: "Interactive Displays", href: "#interactive" },
   { label: "Applications", href: "#applications" },
-  { label: "Products", href: "#products" },
+  { label: "Beyond the display", href: "#products" },
   { label: "Why BlueTech", href: "#why-bluetech" },
   { label: "Contact", href: "#contact" },
 ];
@@ -79,47 +82,57 @@ export const applications = [
 
 export const reasons = [
   {
-    title: "Products we stand behind",
-    copy: "We sell equipment chosen for how it holds up in daily use, not for how it looks on a spec sheet.",
+    title: "Technology expertise",
+    copy: "We work with technology every day — computing, presentation, printing, networking and infrastructure — so a display is specified in the context of the whole room.",
   },
   {
-    title: "Advice before the sale",
-    copy: "Tell us the room, the budget and the people using it — we recommend accordingly, or tell you when you need less.",
+    title: "Practical guidance",
+    copy: "Tell us the room, the budget and the people using it. We talk through the options and where a simpler configuration would do the job.",
   },
   {
-    title: "Support after the sale",
-    copy: "A named person to call when something needs attention, not a ticket queue.",
+    title: "Local presence",
+    copy: "BlueTech is based in Kigali. Buying and conversations happen locally, with people you can meet.",
   },
   {
-    title: "Based in Rwanda",
-    copy: "Buying, delivery, installation and support all happen locally.",
+    title: "Established since 2014",
+    copy: "A Rwandan technology reseller supplying organisations and individuals since 2014.",
   },
 ];
 
-export const services = [
-  ["Consultation", "Working out what actually fits the space, the use case and the budget."],
-  ["Supply and delivery", "Sourcing the right product for the requirement and getting it to site."],
-  ["Installation and mounting", "Wall mounts or stands, cabling and power, finished cleanly."],
-  ["Configuration and handover", "Accounts, apps and connections set up before we leave the room."],
-  ["User training", "A short walkthrough so staff use the display confidently from day one."],
-  ["Technical support", "Help after the sale, remotely or on site."],
+export const journey = [
+  ["Understand the space", "The room, the group size and how people actually use it."],
+  ["Identify the right solution", "Whether an interactive display fits the requirement, and what it needs to work with."],
+  ["Select the configuration", "Size, mounting and connections matched to the room rather than a fixed package."],
+  ["Deploy the solution", "Getting the equipment to site and into the space it was chosen for."],
+  ["Stay reachable afterwards", "A local team you can contact when something needs attention."],
 ] as const;
 
 export const sectors = [
-  "Schools and universities",
-  "Training institutions",
+  "Schools",
+  "Universities",
+  "Training environments",
   "Corporate offices",
-  "Government institutions",
-  "NGOs",
+  "Government environments",
   "Hotels and conference venues",
-  "Churches",
-  "Home users",
+  "Healthcare environments",
+  "Houses of worship",
 ];
+
+export const partners = ["Dell", "HP", "Bitdefender"];
+
+export const beyondCategories = [
+  ["Computing", "Laptops, desktops and tablets for staff, labs and individuals."],
+  ["Presentation", "Monitors and projectors for rooms of every size."],
+  ["Printing", "Printers and photocopiers for everyday office work."],
+  ["Networking", "Switches, routers and access points that keep rooms connected."],
+  ["Infrastructure", "Power protection, storage, accessories and security software."],
+] as const;
 
 export const enquiryOptions = [
   "Interactive Smart Displays",
-  "Audio",
-  "Wearables",
   "Computing",
+  "Presentation and projection",
+  "Printing",
+  "Networking and infrastructure",
   "Other / General Enquiry",
 ];

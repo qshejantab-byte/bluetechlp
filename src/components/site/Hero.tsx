@@ -29,9 +29,9 @@ export function Hero() {
 
         <div className="mt-7 grid gap-6 border-t border-ink-border pt-7 sm:grid-cols-[1.1fr_auto] sm:items-end sm:gap-10">
           <p className="max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
-            Interactive smart displays for modern spaces — supplied, installed and
-            supported in Rwanda. Plus audio, wearables and computing from a reseller that
-            stays involved after delivery.
+            Interactive Smart Displays for modern spaces — present, write, share,
+            collaborate and connect on one surface. Supplied by BlueTech, a Rwanda-based
+            technology reseller since 2014.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Cta href="#contact">Get a Quote</Cta>

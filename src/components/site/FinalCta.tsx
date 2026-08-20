@@ -11,8 +11,8 @@ export function FinalCta() {
           Ready to upgrade the way your rooms work?
         </h2>
         <Lede tone="dark" className="mx-auto mt-6 max-w-2xl">
-          Send us the requirement and we'll come back with a recommendation, pricing and an
-          installation plan.
+          Tell us about the room and the requirement, and we'll come back with a
+          recommendation and pricing.
         </Lede>
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
           <Cta href="#contact">Get a Quote</Cta>

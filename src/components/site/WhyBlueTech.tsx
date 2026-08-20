@@ -1,5 +1,5 @@
 import { Reveal } from "@/hooks/use-reveal";
-import { reasons, sectors, services } from "@/lib/site-data";
+import { journey, reasons, sectors } from "@/lib/site-data";
 import { Eyebrow, Heading, Lede, Section } from "./ui";
 import installImg from "@/assets/support-install.jpg";
 
@@ -7,11 +7,15 @@ export function WhyBlueTech() {
   return (
     <Section id="why-bluetech" tone="dark">
       <Reveal className="max-w-5xl">
-        <Eyebrow tone="dark">Why BlueTech</Eyebrow>
+        <Eyebrow tone="dark">Why BlueTech · Est. 2014</Eyebrow>
         <p className="mt-6 font-display text-[2rem] font-semibold leading-[1.05] text-ink-foreground sm:text-5xl lg:text-[4rem]">
           Technology is easy to sell.
           <br />
           <span className="text-ink-muted">Getting the right technology isn't.</span>
+        </p>
+        <p className="mt-6 max-w-xl text-sm leading-relaxed text-ink-muted sm:text-base">
+          BlueTech is a Rwanda-based technology reseller, working with organisations and
+          individuals in Kigali since 2014.
         </p>
       </Reveal>
 
@@ -39,13 +43,13 @@ export function Services() {
     <Section id="services">
       <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
-          <Eyebrow>Services and support</Eyebrow>
+          <Eyebrow>How a project works</Eyebrow>
           <Heading as="h3" className="mt-5">
-            Six steps, start to finish.
+            From the room to the right solution.
           </Heading>
           <img
             src={installImg}
-            alt="BlueTech technicians wall-mounting a display in an office"
+            alt="An interactive display being set up in an office"
             loading="lazy"
             decoding="async"
             width={1400}
@@ -55,7 +59,7 @@ export function Services() {
         </Reveal>
 
         <ol className="relative border-l border-border pl-6 sm:pl-10">
-          {services.map(([t, c], i) => (
+          {journey.map(([t, c], i) => (
             <Reveal as="li" key={t} delay={i * 50}>
               <div className="relative pb-10 last:pb-0">
                 <span
@@ -81,9 +85,9 @@ export function Trust() {
     <Section tone="dark" className="border-t border-ink-border py-16 sm:py-20 lg:py-24">
       <Reveal className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-16">
         <div>
-          <Eyebrow tone="dark">Who we supply</Eyebrow>
+          <Eyebrow tone="dark">Where displays are used</Eyebrow>
           <h2 className="mt-4 font-display text-2xl font-semibold text-ink-foreground sm:text-3xl">
-            Technology for the way Rwanda works.
+            Environments an interactive display suits.
           </h2>
         </div>
         <ul className="flex flex-wrap gap-2 sm:gap-3">
