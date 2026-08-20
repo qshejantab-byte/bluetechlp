@@ -9,10 +9,11 @@ const fieldClass =
 
 const rows = [
   ["Phone", contact.phone, contact.phoneHref],
+  ["Phone (alt)", contact.phoneAlt, contact.phoneAltHref],
   ["WhatsApp", contact.whatsapp, contact.whatsappHref],
   ["Email", contact.email, `mailto:${contact.email}`],
+  ["Website", contact.website, contact.websiteHref],
   ["Address", contact.address, null],
-  ["Hours", contact.hours, null],
 ] as const;
 
 export function Contact() {

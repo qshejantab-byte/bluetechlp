@@ -6,16 +6,16 @@ const columns = [
     title: "Products",
     links: [
       { label: "Interactive Smart Displays", href: "#interactive" },
-      { label: "Audio", href: "#audio" },
-      { label: "Wearables", href: "#wearables" },
-      { label: "Computing", href: "#computing" },
+      { label: "Applications", href: "#applications" },
+      { label: "Choosing a display", href: "#displays" },
+      { label: "Beyond the display", href: "#products" },
     ],
   },
   {
     title: "Company",
     links: [
       { label: "Why BlueTech", href: "#why-bluetech" },
-      { label: "Services and support", href: "#services" },
+      { label: "How a project works", href: "#services" },
       { label: "Applications", href: "#applications" },
       { label: "Contact", href: "#contact" },
     ],
@@ -30,9 +30,9 @@ export function SiteFooter() {
           <div className="max-w-sm">
             <Wordmark tone="light" />
             <p className="mt-5 text-sm leading-relaxed text-ink-muted">
-              BlueTech is a technology reseller in Rwanda, supplying interactive smart
-              displays, audio, wearables and computing to organisations and individuals —
-              with installation, training and support.
+              BlueTech is a Rwanda-based technology reseller, established in 2014.
+              Interactive Smart Displays are our focus, supported by a broader portfolio
+              of computing, presentation, printing and networking technology.
             </p>
           </div>
 
@@ -57,6 +57,12 @@ export function SiteFooter() {
               {contact.phone}
             </a>
             <a
+              href={contact.phoneAltHref}
+              className="text-sm text-ink-muted hover:text-ink-foreground"
+            >
+              {contact.phoneAlt}
+            </a>
+            <a
               href={contact.whatsappHref}
               className="text-sm text-ink-muted hover:text-ink-foreground"
             >
@@ -68,8 +74,13 @@ export function SiteFooter() {
             >
               {contact.email}
             </a>
+            <a
+              href={contact.websiteHref}
+              className="text-sm text-ink-muted hover:text-ink-foreground"
+            >
+              {contact.website}
+            </a>
             <p className="text-sm text-ink-muted">{contact.address}</p>
-            <p className="text-sm text-ink-muted">{contact.hours}</p>
           </div>
         </div>
 
