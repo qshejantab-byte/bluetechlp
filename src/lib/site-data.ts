@@ -14,8 +14,8 @@ export const contact = {
 
 export const navLinks = [
   { label: "Interactive Displays", href: "#interactive" },
+  { label: "Experience", href: "#experience" },
   { label: "Applications", href: "#applications" },
-  { label: "Beyond the display", href: "#products" },
   { label: "Why BlueTech", href: "#why-bluetech" },
   { label: "Contact", href: "#contact" },
 ];
